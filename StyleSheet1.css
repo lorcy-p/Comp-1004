@@ -1,2 +1,20 @@
-﻿body {
+﻿#body {
+}
+#myText {
+    display: block;
+}
+#scatterCanvas {
+    display: none;
+}
+#mainMenuButton{
+    display: none;
+}
+#inputX {
+    display: none;
+}
+#inputY {
+    display: none;
+}
+#inputButton {
+    display: none;
 }

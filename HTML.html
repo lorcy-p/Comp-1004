@@ -1,22 +1,49 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Graph Drawer</title>
-    <link href="StyleSheet1.css" rel ="stylesheet" type="text/css"/>
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
     <script src="JavaScript.js"></script>
 </head>
+
 <body>
-    <h1 align="center">Graph Drawer  </h1>
+    <h1 align="center" id="Header">Graph Drawer </h1>
 
-    <p align="center">
-        This project is a graph drawing website that can be used to assist in the development of basic machine learning algorithms. <br>
-        You can choose between the option of a scatter graph or a function drawer. You can also import and export your previous graphs.
+    <p align="center" id="IntroText">
+        This project is a graph drawing website that can be used to assist in the development of basic machine learning
+        algorithms. <br>
+        You can choose between the option of a scatter graph or a function drawer. You can also import and export your
+        previous graphs 
     </p>
-    <button type="button" style="position: absolute ;top: 175px; left: 300px;" align="left">Scatter</button>
-    <button type="button" style="position: absolute ;top: 175px; left: 1000px;" align="right">Function</button>
-    <br>
 
+    <div style="position: absolute; top: 175px; left: 300px; text-align: left;">
+        <button onclick="Scatterbutton()" id ="ScatterButton">Scatter</button>
+        <p id="ScatterText">
+            This is a scatter graph. You can enter your own data points.<br> You also have the option for a regression
+            line
+        </p>
+        
+    </div>
+    <div style="position: absolute; top: 175px; left: 1000px;" text-align="right">
 
+        <button onclick="Functionbutton()" id ="FunctionButton">Function</button>
+
+        <p id="FunctionText">
+            This is a function graph. You can enter your own function.
+        </p>
+
+    </div>
+    <div>
+        <canvas id="scatterCanvas" width="800" height="400" style="position: absolute; top: 300px; left: 300px; border: 1px solid;"></canvas>
+        <button id="mainMenuButton" onclick="mainMenuButton()" style="position: absolute; top: 100px; left: 300px;">Return to Menu</button>
+        <input type="number" id="inputX" placeholder="X coordinate">
+        <input type="number" id="inputY" placeholder="Y coordinate">
+        <button id="inputButton" onclick="addDataPoint()">Add Data Point</button>
+        <p id="X_max" style="position: absolute; top: 685px; left: 1080px;"></p>
+        <p id="Y_max" style="position: absolute; top: 290px; left: 270px;"></p>
+    </div>
 </body>
+
 </html>
