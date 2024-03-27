@@ -52,7 +52,7 @@ function drawScatterGraph(dataPoints) {
 
     percentdataPoints = [];
 
-    ctx.fillStyle = "blue"; 
+    ctx.fillStyle = "black"; 
     var pointSize = 5; 
     var largestx = 0;
     var largesty = 0;
@@ -121,45 +121,52 @@ function addDataPoint() {
     }
 }
 
+function addFunc() {
+    var inputFunc = document.getElementById("inputFunction").value;
+    
 
+    if (inputFunc != "") {
+        drawFunctionGraph(inputFunc);
+    }
+    else {
+        alert("Please enter valid function");
+    }
+}
 
 function drawFunctionGraph(UserFunction) {
     var canvas = document.getElementById("functionCanvas");
     var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    
+    console.log(UserFunction);
 
     ctx.fillStyle = "blue";
-    
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
 
+    const parsedFunction = new Function('x', 'return ' + UserFunction);
 
-
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'red';
     ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(0, 700);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(0, 400);
-    ctx.lineTo(800, 400);
-    ctx.stroke();
-}
 
-function addDataPoint() {
-    var inputX = document.getElementById("inputX").value;
-    var inputY = document.getElementById("inputY").value;
-
-    if (inputX !== "" && inputY !== "") {
-        var newDataPoint = { x: parseFloat(inputX), y: parseFloat(inputY) };
-        userInputDataPoints.push(newDataPoint);
-
-        document.getElementById("inputX").value = "";
-        document.getElementById("inputY").value = "";
-
-        drawScatterGraph(userInputDataPoints);
-    } else {
-        alert("Please enter valid X and Y coordinates");
+    for (let x = 0; x <= canvas.width; x++) {
+        const y = parsedFunction(x - canvas.width / 2); 
+        if (x == 0) {
+            ctx.moveTo(x, -y + canvas.height / 2); 
+        } else {
+            ctx.lineTo(x, -y + canvas.height / 2); 
+        }
     }
+
+    ctx.stroke();
+
+    // Draw axes
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height / 2);
+    ctx.lineTo(canvas.width, canvas.height / 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2, 0);
+    ctx.lineTo(canvas.width / 2, canvas.height);
+    ctx.stroke();
 }

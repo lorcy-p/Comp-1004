@@ -1,4 +1,8 @@
-﻿#body {
+﻿#Header {
+   text-align: center;
+}
+body {
+    background-color: royalblue;
 }
 #myText {
     display: block;
