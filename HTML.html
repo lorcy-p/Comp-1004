@@ -11,7 +11,7 @@
 <body>
     <h1 id="Header">Graph Drawer </h1>
 
-    <p align="center" id="IntroText">
+    <p id="IntroText">
         This project is a graph drawing website that can be used to assist in the development of basic machine learning
         algorithms. <br>
         You can choose between the option of a scatter graph or a function drawer. You can also import and export your
@@ -35,9 +35,10 @@
         </p>
 
     </div>
+    
     <div>
-        <canvas id="scatterCanvas" width="800" height="400" style="position: absolute; top: 300px; left: 300px; border: 1px solid;"></canvas>
-        <button id="mainMenuButton" onclick="mainMenuButton()" style="position: absolute; top: 100px; left: 300px;">Return to Menu</button>
+        <canvas id="scatterCanvas" width="800" height="400" ></canvas>
+        <button id="mainMenuButton" onclick="mainMenuButton()"  >Return to Menu</button>
         <input type="number" id="inputX" placeholder="X coordinate">
         <input type="number" id="inputY" placeholder="Y coordinate">
         <button id="inputButton" onclick="addDataPoint()">Add Data Point</button>
@@ -45,7 +46,7 @@
         <p id="Y_max" style="position: absolute; top: 290px; left: 270px;"></p>
     </div>
     <div>
-        <canvas id="functionCanvas" width="800" height="400" style="position: absolute; top: 300px; left: 300px; border: 1px solid;"></canvas>
+        <canvas id="functionCanvas" width="800" height="400" ></canvas>
         
         <input type="text" id="inputFunction" placeholder="Inputted Function">
         <button id="inputfunctionButton" onclick="addFunc()">Add Function</button>

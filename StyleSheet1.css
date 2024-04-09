@@ -1,18 +1,32 @@
 ﻿#Header {
    text-align: center;
 }
+h1 {
+    font-family: "FreeMono",monospace;
+}
+
+p {
+    font-family: Helvetica, sans-serif;
+}
 body {
-    background-color: royalblue;
+    background-color: darkgrey;
+}
+#IntroText {
+    text-align: center;
 }
 #myText {
     display: block;
 }
-#scatterCanvas {
+canvas {
     display: none;
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    border: 1px solid;
 }
-#mainMenuButton{
-    display: none;
-}
+
 #inputX {
     display: none;
 }
@@ -22,12 +36,46 @@ body {
 #inputButton {
     display: none;
 }
-#functionCanvas {
-    display: none;
-}
+
 #inputFunction {
     display: none;
 }
 #inputfunctionButton {
     display: none;
 }
+X_max {
+}
+Y_max {  
+}
+#mainMenuButton {
+    display: none;
+}
+
+button {
+    margin: 1rem;
+    border: 1px solid black;
+    background-color: var(--background-color);
+    padding: 10px 20px;
+    font-size: 20px;
+    color: black;
+    font-family: "FreeMono",monospace;
+    position: relative;
+    cursor: pointer;
+    --background-color: lightblue;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: darkblue;
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+}
+    button:hover::before,
+    button:focus::before {
+        transform: scaleX(1);
+    }

@@ -170,3 +170,5 @@ function drawFunctionGraph(UserFunction) {
     ctx.lineTo(canvas.width / 2, canvas.height);
     ctx.stroke();
 }
+
+
