@@ -17,7 +17,7 @@ function Functionbutton() {
 function Scatterbutton() {
     
     var IDToRemove = ["Header", "IntroText", "FunctionText", "ScatterText", "ScatterButton", "FunctionButton"];
-    var IDToShow = ["scatterCanvas", "mainMenuButton", "Y_max", "X_max", "inputX","inputY","inputButton"];
+    var IDToShow = ["scatterCanvas", "mainMenuButton", "Y_max", "X_max", "inputX", "inputY", "inputButton", "exportButton", "jsoninput","submitjson"];
 
     for (var i of IDToRemove) {
         var textElement = document.getElementById(i);
@@ -28,12 +28,13 @@ function Scatterbutton() {
         textElement.style.display = 'block';
     }
 
-    
-    drawScatterGraph();
+    if (userInputDataPoints != ""){
+        drawScatterGraph(userInputDataPoints);
+    }
 }
 function mainMenuButton() {
     console.log("test");
-    var IDToRemove = ["scatterCanvas", "mainMenuButton", "Y_max", "X_max", "inputX", "inputY", "inputButton", "functionCanvas", "inputFunction", "inputfunctionButton"];
+    var IDToRemove = ["scatterCanvas", "mainMenuButton", "Y_max", "X_max", "inputX", "inputY", "inputButton", "functionCanvas", "inputFunction", "inputfunctionButton", "exportButton", "jsoninput","submitjson"];
     var IDToShow = ["Header", "IntroText", "FunctionText", "ScatterText", "ScatterButton", "FunctionButton"];
     ["scatterCanvas", "mainMenuButton"];
     for (var i of IDToRemove) {
@@ -49,7 +50,7 @@ function mainMenuButton() {
 function drawScatterGraph(dataPoints) {
     var canvas = document.getElementById("scatterCanvas");
     var ctx = canvas.getContext("2d");
-
+    
     percentdataPoints = [];
 
     ctx.fillStyle = "black"; 
@@ -92,6 +93,45 @@ function drawScatterGraph(dataPoints) {
     var axislabel = document.getElementById("Y_max");
     axislabel.innerHTML = largesty;
 
+    //linear regression
+    var xsum = 0, ysum = 0;
+    for (var i = 0; i < dataPoints.length; i++) {
+        var point = percentdataPoints[i];
+        console.log("x = ",point.x);
+        console.log("y = ", point.y);
+
+        xsum += point.x;
+        ysum += point.y;
+        
+    }
+    var numerator = 0, denominator = 0;
+    var meanX = 0, meanY = 0;
+    meanX = xsum / dataPoints.length;
+    meanY = ysum / dataPoints.length;
+
+    for (var i = 0; i < dataPoints.length; i++) {
+        var point = percentdataPoints[i];
+        numerator += ((point.x) - meanX) * (point.y - meanY);
+        denominator += (point.x - meanX) ** 2;
+    }
+    const slope = numerator / denominator;
+    const intercept = meanY - slope * meanX;
+
+    console.log(slope);
+    console.log(intercept);
+
+    ctx.strokeStyle = 'red';
+
+    ctx.lineWidth = 2;
+    
+  
+    ctx.moveTo(0, intercept);
+   
+    ctx.lineTo(canvas.width, canvas.width * slope + intercept);
+    
+    ctx.stroke();
+
+    ctx.strokeStyle = 'black';
 
     ctx.lineWidth = 5;
     ctx.beginPath();
@@ -138,7 +178,7 @@ function drawFunctionGraph(UserFunction) {
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    console.log(UserFunction);
+    
 
     ctx.fillStyle = "blue";
 
@@ -171,4 +211,43 @@ function drawFunctionGraph(UserFunction) {
     ctx.stroke();
 }
 
+function exportdatapoints(){
+    if (userInputDataPoints.length === 0){
+        alert("no data points");
+        return;
+    }
+    const jsonDataPoints = JSON.stringify(userInputDataPoints);
 
+    const blob = new Blob([jsonDataPoints], { type: 'application/json' });
+
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'data_points.json';
+
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+}
+
+function inputJson() {
+    const fileInput = document.getElementById('jsoninput');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        console.error('No file selected.');
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const jsonData = event.target.result;
+        const dataPoints = JSON.parse(jsonData);
+        userInputDataPoints = dataPoints;
+        drawScatterGraph(userInputDataPoints);
+        
+    };
+
+    reader.readAsText(file);
+}

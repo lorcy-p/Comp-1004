@@ -37,13 +37,16 @@
     </div>
     
     <div>
-        <canvas id="scatterCanvas" width="800" height="400" ></canvas>
-        <button id="mainMenuButton" onclick="mainMenuButton()"  >Return to Menu</button>
+        <canvas id="scatterCanvas" width="800" height="400"></canvas>
+        <button id="mainMenuButton" onclick="mainMenuButton()">Return to Menu</button>
         <input type="number" id="inputX" placeholder="X coordinate">
         <input type="number" id="inputY" placeholder="Y coordinate">
         <button id="inputButton" onclick="addDataPoint()">Add Data Point</button>
+        <button id="exportButton" onclick="exportdatapoints()">Export Data Points</button>
         <p id="X_max" style="position: absolute; top: 685px; left: 1080px;"></p>
         <p id="Y_max" style="position: absolute; top: 290px; left: 270px;"></p>
+        <input type="file" id="jsoninput" name="input data points">
+        <button id="submitjson" onclick="inputJson()">Add Data Point</button>
     </div>
     <div>
         <canvas id="functionCanvas" width="800" height="400" ></canvas>

@@ -50,6 +50,15 @@ Y_max {
 #mainMenuButton {
     display: none;
 }
+#exportButton{
+    display: none;
+}
+#jsoninput{
+    display:none;
+}
+#submitjson{
+    display:none;
+}
 
 button {
     margin: 1rem;
@@ -70,9 +79,9 @@ button::before {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 2px;
+    height: 3px;
     background-color: darkblue;
-    transition: transform 300ms ease-in-out;
+    transition: transform 250ms ease-in-out;
     transform: scaleX(0);
 }
     button:hover::before,
