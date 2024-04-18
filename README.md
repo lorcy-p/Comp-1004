@@ -19,6 +19,8 @@ To use the application, simply open the index.html file in a web browser. From t
 You can input data points or functions as needed, and the graphs will update dynamically. You also have the option to import and export data points for the scatter graph. 
 To download the data points, click on the export data points button. To upload the data points, select the data points using the input and click on the button to upload your data points.
 
+WARNING - make sure you do not use coeeficients for the function graph as it is unable to plot these . I.e for y=2x, input 2*x into the function graph.
+
 Files
 index.html: HTML file containing the structure and content of the web application.
 StyleSheet1.css: CSS file containing styles for the HTML elements.
