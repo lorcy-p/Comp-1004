@@ -2,58 +2,77 @@
 <html>
 
 <head>
+    <!-- Define the character set and the title of the webpage -->
     <meta charset="utf-8" />
     <title>Graph Drawer</title>
+    <!-- Link to external stylesheet and JavaScript file -->
     <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
     <script src="JavaScript.js"></script>
 </head>
 
 <body>
+    <!-- Main heading of the webpage -->
     <h1 id="Header">Graph Drawer </h1>
 
+    <!-- Introduction paragraph explaining the purpose of the project -->
     <p id="IntroText">
         This project is a graph drawing website that can be used to assist in the development of basic machine learning
         algorithms. <br>
         You can choose between the option of a scatter graph or a function drawer. You can also import and export your
-        previous graphs 
+        previous graphs
     </p>
 
+    <!-- Section for scatter graph option -->
     <div style="position: absolute; top: 175px; left: 300px; text-align: left;">
-        <button onclick="Scatterbutton()" id ="ScatterButton">Scatter</button>
+        <!-- Button to switch to scatter graph mode -->
+        <button onclick="Scatterbutton()" id="ScatterButton">Scatter</button>
+        <!-- Information about scatter graph functionality -->
         <p id="ScatterText">
             This is a scatter graph. You can enter your own data points.<br> You also have the option for a regression
             line
         </p>
-        
     </div>
+
+    <!-- Section for function graph option -->
     <div style="position: absolute; top: 175px; left: 1000px;" text-align="right">
-
-        <button onclick="Functionbutton()" id ="FunctionButton">Function</button>
-
+        <!-- Button to switch to function graph mode -->
+        <button onclick="Functionbutton()" id="FunctionButton">Function</button>
+        <!-- Information about function graph functionality -->
         <p id="FunctionText">
             This is a function graph. You can enter your own function.
         </p>
-
     </div>
-    
+
+    <!-- Section for scatter graph canvas and related controls -->
     <div>
         <canvas id="scatterCanvas" width="800" height="400"></canvas>
+        <!-- Button to return to main menu -->
         <button id="mainMenuButton" onclick="mainMenuButton()">Return to Menu</button>
+        <!-- Input fields for X and Y coordinates -->
         <input type="number" id="inputX" placeholder="X coordinate">
         <input type="number" id="inputY" placeholder="Y coordinate">
+        <!-- Button to add data point to scatter graph -->
         <button id="inputButton" onclick="addDataPoint()">Add Data Point</button>
+        <!-- Button to export data points -->
         <button id="exportButton" onclick="exportdatapoints()">Export Data Points</button>
+        <!-- Paragraphs to display maximum X and Y coordinates -->
         <p id="X_max" style="position: absolute; top: 685px; left: 1080px;"></p>
         <p id="Y_max" style="position: absolute; top: 290px; left: 270px;"></p>
+        <!-- Input field for uploading JSON file -->
         <input type="file" id="jsoninput" name="input data points">
+        <!-- Button to add data points from JSON file -->
         <button id="submitjson" onclick="inputJson()">Add Data Point</button>
     </div>
+
+    <!-- Section for function graph canvas and related controls -->
     <div>
-        <canvas id="functionCanvas" width="800" height="400" ></canvas>
-        
+        <canvas id="functionCanvas" width="800" height="400"></canvas>
+        <!-- Input field for entering function -->
         <input type="text" id="inputFunction" placeholder="Inputted Function">
+        <!-- Button to add function to function graph -->
         <button id="inputfunctionButton" onclick="addFunc()">Add Function</button>
     </div>
+
 </body>
 
 </html>

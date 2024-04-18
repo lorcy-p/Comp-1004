@@ -1,24 +1,30 @@
-﻿#Header {
-   text-align: center;
+﻿/* CSS styles for the header */
+#Header {
+    text-align: center;
 }
+
 h1 {
     font-family: "FreeMono",monospace;
 }
 
+/* CSS styles for paragraphs */
 p {
     font-family: Helvetica, sans-serif;
 }
+
+/* CSS styles for the body */
 body {
     background-color: darkgrey;
 }
+
+/* CSS styles for the introduction text */
 #IntroText {
     text-align: center;
 }
-#myText {
-    display: block;
-}
+
+/* CSS styles for canvas elements */
 canvas {
-    display: none;
+    display: none; /* Hide canvas by default */
     width: 800px;
     height: 400px;
     position: absolute;
@@ -27,39 +33,12 @@ canvas {
     border: 1px solid;
 }
 
-#inputX {
-    display: none;
-}
-#inputY {
-    display: none;
-}
-#inputButton {
-    display: none;
+/* CSS styles for input elements */
+input {
+    display: none; /* Hide input elements by default */
 }
 
-#inputFunction {
-    display: none;
-}
-#inputfunctionButton {
-    display: none;
-}
-X_max {
-}
-Y_max {  
-}
-#mainMenuButton {
-    display: none;
-}
-#exportButton{
-    display: none;
-}
-#jsoninput{
-    display:none;
-}
-#submitjson{
-    display:none;
-}
-
+/* CSS styles for buttons */
 button {
     margin: 1rem;
     border: 1px solid black;
@@ -70,20 +49,21 @@ button {
     font-family: "FreeMono",monospace;
     position: relative;
     cursor: pointer;
-    --background-color: lightblue;
 }
 
-button::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 3px;
-    background-color: darkblue;
-    transition: transform 250ms ease-in-out;
-    transform: scaleX(0);
-}
+    /* CSS styles for button hover effect */
+    button::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background-color: darkblue;
+        transition: transform 250ms ease-in-out;
+        transform: scaleX(0);
+    }
+
     button:hover::before,
     button:focus::before {
         transform: scaleX(1);
