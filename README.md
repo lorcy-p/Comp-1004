@@ -1,6 +1,13 @@
 Graph Drawer Web Application
 This is a simple web application for drawing scatter graphs and function graphs. It allows users to input data points, import/export data in JSON format, and draw functions based on user-defined equations.
 
+Pre requisites
+Visual studio 2022 with ASPNET and web development installed.
+
+How to run
+To run this project, download and extract the zip and run the solution file called WebApplication4.sln
+WARNING - You may need to go into chromes flags settings and enable "allow invalid for resources from localhost" or the website may not load.
+
 Features
 Scatter Graph Drawing: Users can input their own data points and visualize them on a scatter graph.
 Function Graph Drawing: Users can input their own functions and draw them on a function graph.
